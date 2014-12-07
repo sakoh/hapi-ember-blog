@@ -27,8 +27,8 @@ module.exports = {
 
   create: function(request, reply) {
     Post.create({
-      title: request.payload.title,
-      body: request.payload.body
+      title: request.payload.post.title,
+      body: request.payload.post.body
     }, function(err, model){
 
       if(err) reply(err);
@@ -43,8 +43,8 @@ module.exports = {
 
     var updatedSchema = {
       $set: {
-        title: request.payload.title,
-        body: request.payload.body
+        title: request.payload.post.title,
+        body: request.payload.post.body
       }
     };
 
