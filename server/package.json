@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "hapi": "^7.5.2",
+    "joi": "^5.0.2",
     "mongoose": "^3.8.20"
   }
 }
