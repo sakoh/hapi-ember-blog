@@ -11,7 +11,6 @@ Router.map(function() {
     this.route('edit', { path: ':post_id/edit' });
     this.route('show', { path: ':post_id' });
   });
-  this.resource('post', { path: 'posts/:post_id' }, function() { });
 });
 
 export default Router;
