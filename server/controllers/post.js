@@ -26,9 +26,12 @@ module.exports = {
   },
 
   create: function(request, reply) {
+
+    var data = request.payload.post;
+
     Post.create({
-      title: request.payload.post.title,
-      body: request.payload.post.body
+      title: data.title,
+      body: data.body
     }, function(err, model){
 
       if(err) reply(err);
@@ -39,12 +42,14 @@ module.exports = {
 
   update: function(request, reply) {
 
+    var data = request.payload.post;
+
     var currentPost = {_id: request.params.id};
 
     var updatedSchema = {
       $set: {
-        title: request.payload.post.title,
-        body: request.payload.post.body
+        title: data.title,
+        body: data.body
       }
     };
 
