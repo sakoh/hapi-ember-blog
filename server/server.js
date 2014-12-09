@@ -24,7 +24,7 @@ server.route([
     handler: Post.update
   },
   {
-    path: '/{id}',
+    path: '/posts/{id}',
     method: 'DELETE',
     handler: Post.destroy
   }
