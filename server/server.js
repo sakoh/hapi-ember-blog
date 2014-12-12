@@ -9,9 +9,10 @@ var resource = require('./resource')
 
 mongoose.connect('mongodb://localhost/test');
 
-server.route(resource('post', PostsController));
-server.route(resource('user', UsersController));
-
+server.route(
+  resource('post', PostsController),
+  resource('user', UsersController)
+);
 server.start(function() {
   console.log('server started at http://localhost:8000');
 });
