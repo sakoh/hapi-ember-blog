@@ -10,8 +10,16 @@ var resource = require('./resource')
 mongoose.connect('mongodb://localhost/test');
 
 server.route(
-  resource('post', PostsController),
-  resource('user', UsersController)
+  resource({
+    name: 'post',
+    controller: PostsController,
+    namespace: 'api/v1'
+  }),
+  resource({
+    name: 'user',
+    controller: UsersController,
+    namespace: 'api/v1'
+  })
 );
 server.start(function() {
   console.log('server started at http://localhost:8000');

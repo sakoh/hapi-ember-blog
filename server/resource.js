@@ -1,30 +1,30 @@
-module.exports = function(name, controller) {
+module.exports = function(config) {
 
   return [
     {
-      path: '/' + name + 's',
+      path: '/' + config.namespace + '/' + config.name + 's',
       method: 'GET',
-      handler: controller.index
+      handler: config.controller.index
     },
     {
-      path: '/' + name + 's/{id}',
+      path: '/' + config.namespace + '/' + config.name + 's/{id}',
       method: 'GET',
-      handler: controller.show
+      handler: config.controller.show
     },
     {
-      path: '/' + name + 's',
+      path: '/' + config.namespace + '/' + config.name + 's',
       method: 'POST',
-      handler: controller.create
+      handler: config.controller.create
     },
     {
-      path: '/' + name + 's/{id}',
+      path: '/' + config.namespace + '/' + config.name + 's/{id}',
       method: 'PUT',
-      handler: controller.update
+      handler: config.controller.update
     },
     {
-      path: '/' + name + 's/{id}',
+      path: '/' + config.namespace + '/' + config.name + 's/{id}',
       method: 'DELETE',
-      handler: controller.destroy
+      handler: config.controller.destroy
     }
   ];
 
