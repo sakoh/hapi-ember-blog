@@ -1,17 +1,15 @@
-<form {{action "save" on="submit"}}>
-  <div>
-    <label>
-      Title
-      {{input type="text" value=title}}
-    </label>
+<form role="form" {{action "save" on="submit"}}>
+
+  <div class="form-group">
+    <label for="title">Title:</label>
+    {{input type="text" value=title}}
   </div>
-  <div>
-    <label>
-      Body
-      {{textarea type="text" value=body}}
-    </label>
+
+  <div class="form-group">
+    <label for="body">Body:</label>
+    {{textarea type="text" value=body}}
   </div>
-  <div>
-    <input type="submit" value="Save">
-  </div>
+
+  <button type="submit" value="Save" class="btn btn-primary">Submit</button>
+
 </form>
