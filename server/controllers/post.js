@@ -29,10 +29,7 @@ module.exports = {
 
     var data = request.payload.post;
 
-    Post.create({
-      title: data.title,
-      body: data.body
-    }, function(err, model){
+    Post.create(data, function(err, model){
 
       if(err) reply(err);
 
@@ -44,16 +41,7 @@ module.exports = {
 
     var data = request.payload.post;
 
-    var currentPost = {_id: request.params.id};
-
-    var updatedSchema = {
-      $set: {
-        title: data.title,
-        body: data.body
-      }
-    };
-
-    var post = Post.update(currentPost, updatedSchema);
+    var post = Post.update({_id: request.params.id}, { $set: data });
 
     post.exec(function(err, model){
 

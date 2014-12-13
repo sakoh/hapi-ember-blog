@@ -29,19 +29,12 @@ module.exports = {
 
     var data = request.payload.user;
 
-    User.create({
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      street: data.street,
-      city: data.city,
-      state: data.state,
-      zipCode: data.zipCode
-    }, function(err, model){
+    User.create(data, function(err, model){
 
       if(err) reply(err);
 
       reply({user:model});
+
     });
   },
 
@@ -49,21 +42,7 @@ module.exports = {
 
     var data = request.payload.user;
 
-    var currentUser = {_id: request.params.id};
-
-    var updatedSchema = {
-      $set: {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        street: data.street,
-        city: data.city,
-        state: data.state,
-        zipCode: data.zipCode
-      }
-    };
-
-    var user = User.update(currentUser, updatedSchema);
+    var user = User.update({_id: request.params.id}, { $set: data });
 
     user.exec(function(err, model){
 
