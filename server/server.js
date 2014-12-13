@@ -1,10 +1,20 @@
 var Hapi = require('hapi'),
     mongoose = require('mongoose'),
     resource = require('hapi-resource'),
+    controller = require('./controllers/controller'),
+    Post = require('./models/post'),
+    User = require('./models/user'),
     server = new Hapi.Server('localhost', 8000, {cors: true});
 
-var PostsController = require('./controllers/post'),
-    UsersController = require('./controllers/user');
+var PostsController = controller({
+  name: 'post',
+  model: Post
+});
+
+var UsersController = controller({
+  name: 'user',
+  model: User
+});
 
 
 mongoose.connect('mongodb://localhost/test');
