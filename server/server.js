@@ -1,7 +1,7 @@
 var Hapi = require('hapi'),
     mongoose = require('mongoose'),
     resource = require('hapi-resource'),
-    controller = require('./controllers/controller'),
+    controller = require('hapi-ember-mongoose-controller'),
     Post = require('./models/post'),
     User = require('./models/user'),
     server = new Hapi.Server('localhost', 8000, {cors: true});
