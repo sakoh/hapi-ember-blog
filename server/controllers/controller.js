@@ -1,17 +1,17 @@
-module.exports = function(config) {
+module.exports = function(object) {
 
   return {
 
     index: function(request, reply) {
 
-      config.model
+      object.model
         .find()
         .exec(function(err, models){
           var response = {};
 
           if(err) reply(err);
 
-          response[config.name + 's'] = models
+          response[object.name + 's'] = models
 
           reply(response);
 
@@ -20,14 +20,14 @@ module.exports = function(config) {
     },
 
     show: function(request, reply) {
-      config.model
+      object.model
         .find({_id: request.params.id})
         .exec(function(err, model){
           var response = {};
 
           if(err) reply(err);
 
-          response[config.name] = model;
+          response[object.name] = model;
 
           reply(response);
       });
@@ -36,14 +36,14 @@ module.exports = function(config) {
 
     create: function(request, reply) {
 
-      var data = request.payload[config.name];
+      var data = request.payload[object.name];
 
-      config.model.create(data, function(err, model){
+      object.model.create(data, function(err, model){
         var response = {};
 
         if(err) reply(err);
 
-        response[config.name] = model;
+        response[object.name] = model;
 
         reply(response);
 
@@ -52,16 +52,16 @@ module.exports = function(config) {
 
     update: function(request, reply) {
 
-      var data = request.payload[config.name];
+      var data = request.payload[object.name];
 
-      config.model
+      object.model
         .update({_id: request.params.id}, { $set: data })
         .exec(function(err, model){
           var response = {};
 
           if(err) reply(err);
 
-          response[config.name] = model;
+          response[object.name] = model;
 
           reply(response);
 
@@ -70,13 +70,13 @@ module.exports = function(config) {
     },
 
     destroy: function(request, reply) {
-      config.model
+      object.model
         .remove({_id: request.params.id})
         .exec(function(err, model){
 
         if(err) reply(err);
 
-        reply(config.name + " has been deleted");
+        reply(object.name + " has been deleted");
       });
     }
 
