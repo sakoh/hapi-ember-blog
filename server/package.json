@@ -14,6 +14,7 @@
     "mongoose": "^3.8.20"
   },
   "devDependencies": {
+    "hapi-ember-mongoose-controller": "0.0.1",
     "hapi-resource": "0.0.1"
   }
 }
