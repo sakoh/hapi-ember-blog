@@ -7,12 +7,10 @@ var Hapi = require('hapi'),
     server = new Hapi.Server('localhost', 8000, {cors: true});
 
 var PostsController = controller({
-  name: 'post',
   model: Post
 });
 
 var UsersController = controller({
-  name: 'user',
   model: User
 });
 
